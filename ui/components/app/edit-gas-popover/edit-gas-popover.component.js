@@ -88,10 +88,6 @@ export default function EditGasPopover({
     estimatesUnavailableWarning,
   } = useGasFeeInputs(defaultEstimateToUse, transaction, minimumGasLimit, mode);
 
-  const [showAdvancedForm, setShowAdvancedForm] = useState(
-    !estimateToUse || hasGasErrors || !networkAndAccountSupport1559,
-  );
-
   /**
    * Temporary placeholder, this should be managed by the parent component but
    * we will be extracting this component from the hard to maintain modal/
@@ -214,8 +210,6 @@ export default function EditGasPopover({
             <EditGasDisplay
               showEducationButton={showEducationButton}
               warning={warning}
-              showAdvancedForm={showAdvancedForm}
-              setShowAdvancedForm={setShowAdvancedForm}
               dappSuggestedGasFeeAcknowledged={dappSuggestedGasFeeAcknowledged}
               setDappSuggestedGasFeeAcknowledged={
                 setDappSuggestedGasFeeAcknowledged
@@ -247,6 +241,7 @@ export default function EditGasPopover({
               minimumGasLimit={minimumGasLimitDec}
               balanceError={balanceError}
               estimatesUnavailableWarning={estimatesUnavailableWarning}
+              hasGasErrors={hasGasErrors}
               {...editGasDisplayProps}
             />
           </>
